@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208203328) do
+ActiveRecord::Schema.define(version: 20180214172254) do
+
+  create_table "measures", force: :cascade do |t|
+    t.string "name"
+    t.float "value"
+    t.date "collection_date"
+    t.string "scale"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "unit_of_measurements", force: :cascade do |t|
     t.string "name"

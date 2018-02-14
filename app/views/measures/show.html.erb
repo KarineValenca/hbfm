@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @measure.name %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @measure.value %>
+</p>
+<p>
+  <strong>Data de Coleta:</strong>
+  <%= @measure.collection_date %>
+</p>
+<p>
+  <strong>Escala de Medição:</strong>
+  <%= @measure.scale %>
+</p>
+
+<%= link_to 'Edit', edit_measure_path(@measure) %> |
+<%= link_to 'Back', measures_path %>
