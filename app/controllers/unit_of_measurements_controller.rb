@@ -27,12 +27,10 @@ class UnitOfMeasurementsController < ApplicationController
 	end
 
 	private
-    # Use callbacks to share common setup or constraints between actions.
     def set_unit_of_measurement
       @unit_of_measurement = UnitOfMeasurement.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def unit_of_measurement_params
       params.require(:unit_of_measurement).permit(:name, :initials)
 	end
