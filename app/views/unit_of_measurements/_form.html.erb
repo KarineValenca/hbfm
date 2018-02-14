@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, maxlength: 40%>
   </div>
   <div class="field">
     <%= f.label :initials %><br>
-    <%= f.text_field :initials %>
+    <%= f.text_field :initials, maxlength: 7 %>
   </div>
   <div class="actions">
     <%= f.submit %>
