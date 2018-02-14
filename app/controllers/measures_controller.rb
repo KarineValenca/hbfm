@@ -24,7 +24,7 @@ class MeasuresController < ApplicationController
 	end
 
 	def show
-		
+
 	end
 
 	private
@@ -33,6 +33,6 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale)
+      params.require(:measure).permit(:name, :value, :collection_date, :scale, :unit_of_measurement_id)
 	end
 end

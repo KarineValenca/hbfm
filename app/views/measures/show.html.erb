@@ -18,5 +18,10 @@
   <%= @measure.scale %>
 </p>
 
+<p>
+  <strong>Unidade de Medida:</strong>
+  <%= @measure.unit_of_measurement.name %>
+</p>
+
 <%= link_to 'Edit', edit_measure_path(@measure) %> |
 <%= link_to 'Back', measures_path %>
