@@ -23,5 +23,7 @@
   <%= @measure.unit_of_measurement.name %>
 </p>
 
-<%= link_to 'Edit', edit_measure_path(@measure) %> |
-<%= link_to 'Back', measures_path %>
+<div>
+  <%= link_to 'Editar', edit_measure_path(@measure), class: 'btn btn-warning' %>
+  <%= link_to 'Voltar', measures_path, class: 'btn btn-primary' %>
+</div>

@@ -22,9 +22,9 @@
         <td><%= measure.collection_date %></td>
         <td><%= measure.scale %></td>
         <td><%= measure.unit_of_measurement.name%></td>
-        <td><%= link_to 'Show', measure %></td>
-        <td><%= link_to 'Edit', edit_measure_path(measure) %></td>
-        <td><%= link_to 'Destroy', measure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', measure, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_measure_path(measure), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Excluir', measure, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'Nova Medida', new_measure_path %>
+<%= link_to 'Nova Medida', new_measure_path, class: 'btn btn-success' %>

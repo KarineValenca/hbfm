@@ -32,6 +32,6 @@
     <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
 </div>
   <div class="actions">
-    <%= f.submit%>
+    <%= f.submit 'Salvar', class: 'btn btn-success'%>
   </div>
 <% end %>
