@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.text_field :metric_id, :value => @metric.id %>
   <div class="field">
     <%= f.label 'Nome:' %><br>
     <%= f.text_field :name, maxlength: 200, size: 13%>

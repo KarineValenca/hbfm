@@ -6,6 +6,7 @@ class MeasuresController < ApplicationController
 	end
 
 	def new
+		@metric = Metric.find(params[:metric])
 		@measure = Measure.new
 	end
 
@@ -33,6 +34,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale, :unit_of_measurement_id)
+      params.require(:measure).permit(:name, :value, :collection_date, :scale, :unit_of_measurement_id,
+      									:metric_id)
 	end
 end
