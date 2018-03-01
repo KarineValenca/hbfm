@@ -1,6 +1,6 @@
-<%= form_for(@measure) do |f| %>
 <div id="form_measures">
     <%= f.text_field :metric_id, :value => @metric.id %>
+    <%= f.text_field :id, :value => measure_index %>
     <div class="field">
       <%= f.label 'Nome:' %><br>
       <%= f.text_field :name, maxlength: 200, size: 13%>
@@ -22,4 +22,3 @@
       <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
     </div>
   </div>
-<% end %>

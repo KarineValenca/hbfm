@@ -8,6 +8,7 @@ class MeasuresController < ApplicationController
 	def new
 		@metric = Metric.find(params[:metric])
 		@measure = Measure.new
+		@last_measure = Measure.last
 	end
 
 	def create
