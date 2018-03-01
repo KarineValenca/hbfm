@@ -10,15 +10,9 @@
       </ul>
     </div>
   <% end %>
-  
+  <input type='button' value='Adicionar Medidas' id='add_measure'/>
   <div id='measures'>
     <%= render 'partial_measure', f: f %>
-  </div>
-
-  <input type='button' value='Adicionar Medidas' id='add_measure'/>
-
-  <div class="actions">
-    <%= f.submit 'Salvar', class: 'btn btn-success'%>
   </div>
 
    <script type="text/javascript">

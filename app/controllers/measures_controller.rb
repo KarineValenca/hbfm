@@ -14,15 +14,14 @@ class MeasuresController < ApplicationController
 	def create
 		@measure = Measure.new(measure_params)
 
-		respond_to do |format|
+		
       		if @measure.save
-        		format.html { redirect_to @measure, notice: 'Medida Criada com Sucesso.' }
-        		format.json { render :show, status: :created, location: @measure}
+
       		else
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }
       		end
-		end
+		
 	end
 
 	def show
