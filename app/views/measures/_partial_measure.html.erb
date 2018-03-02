@@ -2,15 +2,15 @@
     <%= f.text_field :metric_id, :value => @metric.id %>
     <div class="field">
       <%= f.label 'Nome:' %><br>
-      <%= f.text_field :name, maxlength: 200, size: 13%>
+      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name'%>
     </div>
     <div class="field">
       <%= f.label 'Valor' %><br>
-      <%= f.number_field :value %>
+      <%= f.number_field :value, id: 'value' %>
     </div>
     <div class="field">
       <%= f.label 'Data de Coleta'%><br>
-      <%= f.date_field :collection_date %>
+      <%= f.date_field :collection_date, id: 'date' %>
     </div>
     <div class="field">
       <%= f.label 'Escala de Medição' %><br>
@@ -21,7 +21,7 @@
       <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
     </div>
     <div class="actions">
-      <%= f.submit 'Salvar', class: 'btn btn-success'%>
+      <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
     </div>
 
 

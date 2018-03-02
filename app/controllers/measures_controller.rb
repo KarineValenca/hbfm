@@ -16,7 +16,10 @@ class MeasuresController < ApplicationController
 
 		
       		if @measure.save
-
+      			respond_to do |format|
+    				format.html { redirect_to measures_url }
+				    format.js
+  				end
       		else
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }

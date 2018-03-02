@@ -1,4 +1,4 @@
-<%= form_for(@measure) do |f| %>
+<%= form_for @measure, remote: true do |f| %>
   <% if @measure.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
@@ -15,6 +15,9 @@
     <%= render 'partial_measure', f: f %>
   </div>
 
+  <div id='div-final-meaures'>
+    <h1> Combine as Medidas </h1>
+  </div>
    <script type="text/javascript">
         $('#add_measure').click(function() {
             $("#measures").append('<%= escape_javascript("#{render 'partial_measure', f: f}").html_safe %>');
