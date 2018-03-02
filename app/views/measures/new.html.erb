@@ -1,4 +1,7 @@
-<h1><%= @metric.name %> - Cadastrar Medidas</h1>
-<%= link_to 'Back', measures_path, class: 'btn btn-primary' %>
+<div class="container">
+<h1 class="text-center"><%= @metric.name %> - Cadastrar Medidas</h1>
 <%= render 'form' %>
+
+</div>
+<%= link_to 'Voltar', measures_path, class: 'btn btn-primary' %>
 
