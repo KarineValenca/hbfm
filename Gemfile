@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'record_tag_helper', '~> 1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
