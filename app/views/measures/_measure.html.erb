@@ -1,7 +1,8 @@
-	<li>
-		<%= @measure.id %>
-		<%= @measure.name %>
-		<%= @measure.value %>
-		POSIÇÃO<%= @measure.position %>
-	</li>
-</ul>
+<% @measures_list.each do |measure| %>
+	<%= content_tag_for :li, measure do %>
+    	<%= measure.id %>
+		<%= measure.name %>
+		<%= measure.value %>
+  	<% end %>
+<% end %>
+		

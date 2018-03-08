@@ -2,7 +2,6 @@ class MeasuresController < ApplicationController
 	before_action :set_measure, only: [:show, :edit, :update, :destroy]
 
 	def index
-
 		 @measures = Measure.order(:position)
 	end
 
@@ -18,17 +17,27 @@ class MeasuresController < ApplicationController
 
 	def create
 		@measure = Measure.new(measure_params)
-
+		@measures_list = []
+		print '*' * 90
+		if @measures_list.empty?
+			@measure.position = 1
+		else
+			@measure.position = Measure.last.position + 1
+		end
 		
       		if @measure.save
       			respond_to do |format|
     				format.html { redirect_to measures_url }
 				    format.js
   				end
+  				
+  				@measures_list << @measure
       		else
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }
       		end
+
+      	
 	end
 
 	def show
@@ -36,9 +45,8 @@ class MeasuresController < ApplicationController
 	end
 
 	def sort
-		print '*' * 90
-		params[@measure].each_with_index do |id, index|
-   			Measure.update_all({position: index+1}, {id: id})
+		params[:measure].each_with_index do |id, index|
+   			Measure.where(id: id).update_all({position: index+1})
   		end
   		render nothing: true
 	end
