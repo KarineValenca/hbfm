@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery-ui/widget 
 //= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets

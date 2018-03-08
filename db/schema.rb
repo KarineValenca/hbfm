@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227181024) do
+ActiveRecord::Schema.define(version: 20180308131534) do
 
   create_table "measures", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180227181024) do
     t.datetime "updated_at", null: false
     t.integer "unit_of_measurement_id"
     t.integer "metric_id"
+    t.integer "position"
     t.index ["metric_id"], name: "index_measures_on_metric_id"
     t.index ["unit_of_measurement_id"], name: "index_measures_on_unit_of_measurement_id"
   end

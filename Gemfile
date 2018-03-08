@@ -35,6 +35,7 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'record_tag_helper', '~> 1.0'
+gem 'acts_as_list'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

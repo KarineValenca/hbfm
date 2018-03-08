@@ -2,7 +2,12 @@ class MeasuresController < ApplicationController
 	before_action :set_measure, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@measures = Measure.all
+
+		 @measures = Measure.order(:position)
+	end
+
+	def list
+		@measures = Measure.order(:position)
 	end
 
 	def new
@@ -24,11 +29,18 @@ class MeasuresController < ApplicationController
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }
       		end
-		
 	end
 
 	def show
 
+	end
+
+	def sort
+		print '*' * 90
+		params[@measure].each_with_index do |id, index|
+   			Measure.update_all({position: index+1}, {id: id})
+  		end
+  		render nothing: true
 	end
 
 	private
@@ -37,7 +49,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale, :unit_of_measurement_id,
+      params.require(:measure).permit(:name, :value, :collection_date, :scale, :position, :unit_of_measurement_id,
       									:metric_id)
 	end
 end
