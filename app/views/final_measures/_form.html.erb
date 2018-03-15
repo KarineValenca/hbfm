@@ -1,0 +1,19 @@
+  <% if @final_measure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@final_measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
+
+      <ul>
+      <% @final_measure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <div id='measures'>
+        <%= render :partial => '/measures/form', locals: { measure: @measure }%>
+      </div>
+    </div>
+  </div>
+

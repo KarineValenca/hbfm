@@ -1,3 +1,3 @@
 class Metric < ApplicationRecord
-	has_many :measures
+	has_many :final_measures
 end

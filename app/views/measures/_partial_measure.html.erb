@@ -1,5 +1,6 @@
 <div id="form_measures">
-    <%= f.hidden_field :metric_id, :value => @metric.id %>
+    <%= f.text_field :metric, :value => @metric.id %>
+    <%= f.text_field :final_measure_id, :value => @final_measure.id %>
     <h3>Insira as Medidas</h3>
     <div class="field">
       <%= f.label 'Nome:' %><br>
@@ -20,9 +21,6 @@
     <div class="field">
       <%= f.label "Unidade de Medida:"%><br>
       <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
     </div>
 </div>
 

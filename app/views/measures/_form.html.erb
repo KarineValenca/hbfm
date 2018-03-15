@@ -1,4 +1,4 @@
-<%= form_for @measure, remote: true do |f| %>
+<%= form_for measure, remote: true do |f| %>
   <% if @measure.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
@@ -13,7 +13,10 @@
   <div class="row">
     <div class="col">
       <div id='measures'>
-        <%= render 'partial_measure', f: f %>
+        <%= render 'measures/partial_measure', f: f %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
       </div>
     </div>
     <div class="col">

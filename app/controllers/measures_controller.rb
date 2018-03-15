@@ -5,20 +5,25 @@ class MeasuresController < ApplicationController
 		 @measures = Measure.order(:position)
 	end
 
-	def list
-		@measures = Measure.order(:position)
-	end
-
 	def new
-		@metric = Metric.find(params[:metric])
+		#@final_measure = FinalMeasure.find(params[:final_measure_id])
+		@metric = Metric.find(1)
 		@measure = Measure.new
-		@last_measure = Measure.last
 	end
 
 	def create
+		@metric = Metric.find(1)
+		if  FinalMeasure.count == 0 #|| FinalMeasure.last.value != nil
+			FinalMeasure.create!(:metric_id => @metric.id)
+		else
+			puts 'Não necessário criar medida final'
+		end
+		
 		@measure = Measure.new(measure_params)
 		@measures_list = []
+		@measure.final_measure = FinalMeasure.last
 		print '*' * 90
+		puts "#{@measure.final_measure}"
 		if @measures_list.empty?
 			@measure.position = 1
 		else
@@ -36,7 +41,6 @@ class MeasuresController < ApplicationController
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }
       		end
-
       	
 	end
 
@@ -58,6 +62,6 @@ class MeasuresController < ApplicationController
 
     def measure_params
       params.require(:measure).permit(:name, :value, :collection_date, :scale, :position, :unit_of_measurement_id,
-      									:metric_id)
+      									:final_measure_id)
 	end
 end
