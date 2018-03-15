@@ -1,6 +1,5 @@
 <div id="form_measures">
-    <%= f.text_field :metric, :value => @metric.id %>
-    <%= f.text_field :final_measure_id, :value => @final_measure.id %>
+    <%= f.hidden_field :metric, :value => @metric.id %>
     <h3>Insira as Medidas</h3>
     <div class="field">
       <%= f.label 'Nome:' %><br>
