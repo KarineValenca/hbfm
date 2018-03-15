@@ -24,12 +24,6 @@ class MeasuresController < ApplicationController
 		@measure.final_measure = FinalMeasure.last
 		print '*' * 90
 		puts "#{@measure.final_measure}"
-		if @measures_list.empty?
-			@measure.position = 1
-		else
-			@measure.position = Measure.last.position + 1
-		end
-		
       		if @measure.save
       			respond_to do |format|
     				format.html { redirect_to measures_url }
