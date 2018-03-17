@@ -4,7 +4,9 @@ class FinalMeasuresController < ApplicationController
 
 	def new
 		@metric = Metric.find(params[:metric])
-		@final_measure = FinalMeasure.new
+		@final_measure = FinalMeasure.new(:metric_id => @metric)
+		puts "%" * 90
+		puts "#{@metric.id}"
 		@measure = Measure.new
 	end
 

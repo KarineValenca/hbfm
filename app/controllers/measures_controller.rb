@@ -6,21 +6,22 @@ class MeasuresController < ApplicationController
 	end
 
 	def new
-		#@final_measure = FinalMeasure.find(params[:final_measure_id])
-		@metric = Metric.find(2)
 		@measure = Measure.new
 	end
 
 	def create
-		@metric = Metric.find(2)
-		if  FinalMeasure.count == 0 #|| FinalMeasure.last.value != nil
+		# TODO: FIX THIS
+		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
 			FinalMeasure.create!(:metric_id => @metric.id)
 		else
 			puts 'Não necessário criar medida final'
 		end
-		
+
+		@final_measure = FinalMeasure.last
+		@metric = Metric.find(@final_measure.metric_id)
+
 		@measure = Measure.new(measure_params)
-		@measure.final_measure = FinalMeasure.last
+		@measure.final_measure = @final_measure
 		print '*' * 90
 		puts "#{@measure.final_measure}"
       		if @measure.save
