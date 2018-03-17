@@ -28,10 +28,12 @@ class FinalMeasuresController < ApplicationController
 
 
 	def update
-		puts '@' * 100
 		@measures = Measure.where(final_measure_id: @final_measure.id)
-		contador = @measures.count
-     	puts "#{contador}"
+     	@measures.each do |measure|
+     		@final_measure.operation << measure.value.to_s + " "
+     	end
+
+     	@final_measure.save
 	end
 
 

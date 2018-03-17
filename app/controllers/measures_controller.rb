@@ -7,12 +7,12 @@ class MeasuresController < ApplicationController
 
 	def new
 		#@final_measure = FinalMeasure.find(params[:final_measure_id])
-		@metric = Metric.find(1)
+		@metric = Metric.find(2)
 		@measure = Measure.new
 	end
 
 	def create
-		@metric = Metric.find(1)
+		@metric = Metric.find(2)
 		if  FinalMeasure.count == 0 #|| FinalMeasure.last.value != nil
 			FinalMeasure.create!(:metric_id => @metric.id)
 		else
