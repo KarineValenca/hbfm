@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
   resources :unit_of_measurements
   resources :metrics
-  resources :final_measures
+
+  resources :final_measures do
+    resources :measures
+  end 
   
 end

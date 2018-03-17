@@ -20,7 +20,6 @@ class MeasuresController < ApplicationController
 		end
 		
 		@measure = Measure.new(measure_params)
-		@measures_list = []
 		@measure.final_measure = FinalMeasure.last
 		print '*' * 90
 		puts "#{@measure.final_measure}"
@@ -30,7 +29,6 @@ class MeasuresController < ApplicationController
 				    format.js
   				end
   				
-  				@measures_list << @measure
       		else
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }

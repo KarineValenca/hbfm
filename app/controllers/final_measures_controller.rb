@@ -19,13 +19,19 @@ class FinalMeasuresController < ApplicationController
   			else
 		        format.html { render :new }
 		        format.json { render json: @final_measure.errors, status: :unprocessable_entity }
-      		end
-
-      	
+      		end    	
 	end
 
 	def show
 
+	end
+
+
+	def update
+		puts '@' * 100
+		@measures = Measure.where(final_measure_id: @final_measure.id)
+		contador = @measures.count
+     	puts "#{contador}"
 	end
 
 
