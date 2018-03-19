@@ -1,5 +1,5 @@
 class AddMetricToMeasures < ActiveRecord::Migration[5.1]
   def change
-    add_reference :measures, :metric, foreign_key: true
+    add_column :measures, :metric, :integer
   end
 end

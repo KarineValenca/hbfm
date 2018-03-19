@@ -30,19 +30,18 @@ class FinalMeasuresController < ApplicationController
 
 
 	def update
-		@measures = Measure.where(final_measure_id: @final_measure.id)
+		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
 
 		@final_value = 0
 		@final_measure.operation = ""
 
      	@measures.each do |measure|
-     		@final_measure.operation << measure.value.to_s + " "
-     		puts '$' * 100
-     		puts "#{measure.value}"
-
-     		##TODO: FIX - use eval
-     		operator.map {|o| @final_value.public_send o,measure.value}
+     		if measure.last?
+     			measure.operator = ""
+     		end
+     		@final_measure.operation << measure.value.to_s + measure.operator
      	end
+     	@final_measure.value = eval(@final_measure.operation)
      	puts "*" * 90
      	puts "#{@final_value}"
      	@final_measure.save

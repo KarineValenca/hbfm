@@ -3,6 +3,8 @@ class Measure < ApplicationRecord
 	belongs_to :final_measure
 	acts_as_list
 
+	validates :value, presence: true
+	validates :name, presence: true
 	before_save :set_position
 
 	protected

@@ -10,10 +10,10 @@ class MeasuresController < ApplicationController
 	end
 
 	def create
+		@measure = Measure.new(measure_params)
 		# TODO: FIX THIS
 		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
-			## TODO: FIX: NOT @metric.id doesn't exists
-			FinalMeasure.create!(:metric_id => @metric.id)
+			FinalMeasure.create!(:metric_id => @measure.metric)
 		else
 			puts 'Não necessário criar medida final'
 		end
@@ -21,7 +21,7 @@ class MeasuresController < ApplicationController
 		@final_measure = FinalMeasure.last
 		@metric = Metric.find(@final_measure.metric_id)
 
-		@measure = Measure.new(measure_params)
+		
 		@measure.final_measure = @final_measure
 		@measure.operator = "="
 
@@ -61,7 +61,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale, :operator, :position, :unit_of_measurement_id,
-      									:final_measure_id)
+      params.require(:measure).permit(:name, :value, :collection_date, :scale, :operator, :position, :metric,
+      								 :unit_of_measurement_id, :final_measure_id)
 	end
 end
