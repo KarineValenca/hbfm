@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :measures do
   	collection do
   		post 'sort'
+      post 'update_operator'
   	end
   end
   resources :unit_of_measurements

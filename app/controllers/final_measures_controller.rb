@@ -31,10 +31,20 @@ class FinalMeasuresController < ApplicationController
 
 	def update
 		@measures = Measure.where(final_measure_id: @final_measure.id)
+
+		@final_value = 0
+		@final_measure.operation = ""
+
      	@measures.each do |measure|
      		@final_measure.operation << measure.value.to_s + " "
-     	end
+     		puts '$' * 100
+     		puts "#{measure.value}"
 
+     		##TODO: FIX - use eval
+     		operator.map {|o| @final_value.public_send o,measure.value}
+     	end
+     	puts "*" * 90
+     	puts "#{@final_value}"
      	@final_measure.save
 	end
 

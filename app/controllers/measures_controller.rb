@@ -12,6 +12,7 @@ class MeasuresController < ApplicationController
 	def create
 		# TODO: FIX THIS
 		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
+			## TODO: FIX: NOT @metric.id doesn't exists
 			FinalMeasure.create!(:metric_id => @metric.id)
 		else
 			puts 'Não necessário criar medida final'
@@ -29,7 +30,6 @@ class MeasuresController < ApplicationController
     				format.html { redirect_to measures_url }
 				    format.js
   				end
-  				
       		else
 		        format.html { render :new }
 		        format.json { render json: @measure.errors, status: :unprocessable_entity }
@@ -39,6 +39,14 @@ class MeasuresController < ApplicationController
 
 	def show
 
+	end
+
+	def update_operator
+		@measures = Measure.where(params[:measures])
+		@operator = params[:operator]
+		@measure = Measure.find(params[:measure])
+		puts "#{@measure.name}"
+		puts "#{@operator}"
 	end
 
 	def sort
@@ -54,7 +62,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale, :position, :unit_of_measurement_id,
+      params.require(:measure).permit(:name, :value, :collection_date, :scale, :operator, :position, :unit_of_measurement_id,
       									:final_measure_id)
 	end
 end
