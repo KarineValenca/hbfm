@@ -23,8 +23,8 @@ class MeasuresController < ApplicationController
 
 		@measure = Measure.new(measure_params)
 		@measure.final_measure = @final_measure
-		print '*' * 90
-		puts "#{@measure.final_measure}"
+		@measure.operator = "="
+
       		if @measure.save
       			respond_to do |format|
     				format.html { redirect_to measures_url }
@@ -42,11 +42,10 @@ class MeasuresController < ApplicationController
 	end
 
 	def update_operator
-		@measures = Measure.where(params[:measures])
 		@operator = params[:operator]
 		@measure = Measure.find(params[:measure])
-		puts "#{@measure.name}"
-		puts "#{@operator}"
+		@measure.operator = @operator
+		@measure.save
 	end
 
 	def sort
