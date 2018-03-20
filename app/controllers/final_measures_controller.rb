@@ -5,8 +5,6 @@ class FinalMeasuresController < ApplicationController
 	def new
 		@metric = Metric.find(params[:metric])
 		@final_measure = FinalMeasure.new(:metric_id => @metric)
-		puts "%" * 90
-		puts "#{@metric.id}"
 		@measure = Measure.new
 	end
 
@@ -31,19 +29,21 @@ class FinalMeasuresController < ApplicationController
 
 	def update
 		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
+		puts "$"*90
+		puts "#{@final_measure.id}"
 
 		@final_value = 0
 		@final_measure.operation = ""
 
      	@measures.each do |measure|
      		if measure.last?
+     			puts "ULTIMA"
      			measure.operator = ""
      		end
      		@final_measure.operation << measure.value.to_s + measure.operator
      	end
-     	@final_measure.value = eval(@final_measure.operation)
-     	puts "*" * 90
-     	puts "#{@final_value}"
+     	@final_measure.value = 100
+     	#@final_measure.value = eval(@final_measure.operation)
      	@final_measure.save
 	end
 

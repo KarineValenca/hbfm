@@ -13,6 +13,7 @@ class MeasuresController < ApplicationController
 		@measure = Measure.new(measure_params)
 		# TODO: FIX THIS
 		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
+			puts "Criando medida final"
 			FinalMeasure.create!(:metric_id => @measure.metric)
 		else
 			puts 'Não necessário criar medida final'
@@ -49,6 +50,7 @@ class MeasuresController < ApplicationController
 	end
 
 	def sort
+		@final_measure = FinalMeasure.last
 		params[:measure].each_with_index do |id, index|
    			Measure.where(id: id).update_all({position: index+1})
   		end
