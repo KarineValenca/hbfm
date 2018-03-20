@@ -29,21 +29,18 @@ class FinalMeasuresController < ApplicationController
 
 	def update
 		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
-		puts "$"*90
-		puts "#{@final_measure.id}"
 
 		@final_value = 0
 		@final_measure.operation = ""
 
      	@measures.each do |measure|
-     		if measure.last?
+     		if measure == @measures.last
      			puts "ULTIMA"
      			measure.operator = ""
      		end
      		@final_measure.operation << measure.value.to_s + measure.operator
      	end
-     	@final_measure.value = 100
-     	#@final_measure.value = eval(@final_measure.operation)
+     	@final_measure.value = eval(@final_measure.operation)
      	@final_measure.save
 	end
 
