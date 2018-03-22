@@ -1,7 +1,7 @@
 <%= content_tag_for :li, measure do %>
     	<hidden id="measure_id_<%= measure.id %>"><%= measure.id %></hidden>
 		<span id="measure_name"><%= measure.name %></span>
-		<span id="measure_value"><%= measure.value %></span>
+		<span id="measure_value" class="value"><%= measure.value %></span>
 		<select id="operator_<%= measure.id %>">
 			<option value="">=</option><option>+</option><option>-</option><option>*</option><option>/</option>
 		</select>

@@ -33,12 +33,15 @@ class FinalMeasuresController < ApplicationController
 		@final_value = 0
 		@final_measure.operation = ""
 
+
      	@measures.each do |measure|
      		if measure == @measures.last
      			measure.operator = ""
      		end
      		@final_measure.operation << measure.value.to_s + measure.operator
      	end
+
+     	#@final_measure.value = 0
      	@final_measure.value = eval(@final_measure.operation)
      	@final_measure.save
 	end
