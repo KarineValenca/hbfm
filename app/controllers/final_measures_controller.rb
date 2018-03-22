@@ -35,7 +35,6 @@ class FinalMeasuresController < ApplicationController
 
      	@measures.each do |measure|
      		if measure == @measures.last
-     			puts "ULTIMA"
      			measure.operator = ""
      		end
      		@final_measure.operation << measure.value.to_s + measure.operator
