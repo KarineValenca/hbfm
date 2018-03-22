@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319223602) do
+ActiveRecord::Schema.define(version: 20180322172340) do
 
   create_table "final_measures", force: :cascade do |t|
     t.string "operation"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180319223602) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "metric_id"
+    t.boolean "is_final"
     t.index ["metric_id"], name: "index_final_measures_on_metric_id"
   end
 

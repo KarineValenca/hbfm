@@ -53,6 +53,15 @@ class FinalMeasuresController < ApplicationController
      	
 	end
 
+	def finalize_measure
+		@final_measure = FinalMeasure.last
+		@final_measure.is_final = true
+
+		@final_measure.save
+
+		redirect_to metrics_path
+	end
+
 
 	private
     def set_final_measure

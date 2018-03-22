@@ -12,7 +12,7 @@ class MeasuresController < ApplicationController
 	def create
 		@measure = Measure.new(measure_params)
 		# TODO: FIX THIS
-		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
+		if  FinalMeasure.count == 0 || FinalMeasure.last.is_final
 			puts "Criando medida final"
 			FinalMeasure.create!(:metric_id => @measure.metric)
 			respond_to do |format|
