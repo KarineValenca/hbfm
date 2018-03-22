@@ -23,11 +23,16 @@ class FinalMeasuresController < ApplicationController
 	end
 
 	def show
-
+		update
+		respond_to do |format|
+  			format.js {render layout: false} # Add this line to you respond_to block
+		end
+  		
 	end
 
 
 	def update
+		puts "UPDATE MATHOD" * 90
 		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
 
 		@final_value = 0
@@ -44,6 +49,8 @@ class FinalMeasuresController < ApplicationController
      	#@final_measure.value = 0
      	@final_measure.value = eval(@final_measure.operation)
      	@final_measure.save
+
+     	
 	end
 
 

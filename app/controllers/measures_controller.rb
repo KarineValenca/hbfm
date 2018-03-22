@@ -15,6 +15,9 @@ class MeasuresController < ApplicationController
 		if  FinalMeasure.count == 0 || FinalMeasure.last.value != nil
 			puts "Criando medida final"
 			FinalMeasure.create!(:metric_id => @measure.metric)
+			respond_to do |format|
+				format.js
+			end
 		else
 			puts 'Não necessário criar medida final'
 		end

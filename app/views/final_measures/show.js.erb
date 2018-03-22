@@ -1,0 +1,3 @@
+$('#show').click(function(){
+ $('#show-results').html("<%= escape_javascript(render partial: 'final_measures/show', locals: { final_measure: @final_measure } ) %>");
+});
