@@ -46,7 +46,9 @@ class MeasuresController < ApplicationController
 	end
 
 	def update
-
+		puts "UPDATE METHOD"
+		@measure = Measure.find(params[:id])
+		@measure.update_attributes(measure_params)
 	end
 
 	def update_operator

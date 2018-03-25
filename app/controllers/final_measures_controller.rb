@@ -50,20 +50,21 @@ class FinalMeasuresController < ApplicationController
      		@final_measure.operation << measure.value.to_s + measure.operator
      	end
 
-     	@final_measure.value = 0
-     	#@final_measure.value = eval(@final_measure.operation)
+     	#@final_measure.value = 0
+     	@final_measure.value = eval(@final_measure.operation)
      	@final_measure.save
 
      	
 	end
 
 	def finalize_measure
-		@final_measure = FinalMeasure.find(params[:id])
+		@final_measure = FinalMeasure.last
 		@final_measure.is_final = true
 
 		@final_measure.save
-
+		puts "AAA"
 		redirect_to metrics_path
+		puts "aaa"
 	end
 
 

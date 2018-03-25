@@ -14,6 +14,7 @@
       		<%= f.label 'Valor' %><br>
       		<%= f.number_field :value, value: measure.value %>
     	</div>
+    	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
     	<div class="actions">
         <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
       </div>
@@ -29,9 +30,8 @@
         </ul>
       </div>
       <div id='final'>
-        <h3>Resultado Final</h3>
-            
+        <h3>Resultado Final</h3>        
       </div>
     </div>
   </div>
-<%= link_to "Finalizar", 'finalize_measure', :method => 'post', class: 'btn btn-primary' %>
+<%= link_to "Finalizar", metrics_path, class: 'btn btn-primary' %>
