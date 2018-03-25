@@ -45,6 +45,10 @@ class MeasuresController < ApplicationController
 
 	end
 
+	def update
+
+	end
+
 	def update_operator
 		@operator = params[:operator]
 		@measure = Measure.find(params[:measure])
