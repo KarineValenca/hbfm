@@ -1,0 +1,10 @@
+<div class="container">
+<h1 class="text-center"><%= @metric.name %> - Cadastrar Medidas</h1>
+<%= render 'form' %>
+
+</div>
+<%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
+
+<%= link_to "Finalizar", 'finalize_measure', :method => 'post', class: 'btn btn-primary' %>
+
+

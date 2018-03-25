@@ -3,7 +3,19 @@ Rails.application.routes.draw do
   root 'home#index'
 
   
-  resources :measures
+  resources :measures do
+  	collection do
+  		post 'sort'
+      post 'update_operator'
+  	end
+  end
   resources :unit_of_measurements
+  resources :metrics
+
+  resources :final_measures do
+    collection do
+      post 'finalize_measure'
+    end
+  end
   
 end

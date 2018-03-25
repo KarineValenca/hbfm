@@ -1,37 +1,35 @@
-<%= form_for(@measure) do |f| %>
-  <% if @measure.errors.any? %>
+<%= form_for measure, remote: true do |f| %>
+  <% if measure.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
+      <h2><%= pluralize(measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
 
       <ul>
-      <% @measure.errors.full_messages.each do |message| %>
+      <% measure.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label 'Nome:' %><br>
-    <%= f.text_field :name, maxlength: 200, size: 13%>
-  </div>
-  <div class="field">
-    <%= f.label 'Valor' %><br>
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label 'Data de Coleta'%><br>
-    <%= f.date_field :collection_date %>
-  </div>
-  <div class="field">
-    <%= f.label 'Escala de Medição' %><br>
-    <%= f.select(:scale, "<option>Nominal</option><option>Ordinal</option><option>Intervalar</option><option>Ratio</option><option>Absoluta</option>".html_safe) %>
-  </div>
-   <div class="field">
-    <%= f.label "Unidade de Medida"%><br>
-    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
-</div>
-  <div class="actions">
-    <%= f.submit 'Salvar', class: 'btn btn-success'%>
+  <div class="row">
+    <div class="col">
+      <div id='measures'>
+        <%= render 'measures/partial_measure', f: f %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
+      </div>
+    </div>
+    <div class="col">
+      <div id='div-final-meaures'>
+        <h3> Combine as Medidas </h3>
+        <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
+        </ul>
+      </div>
+      <div id='final'>
+        <h3>Resultado Final</h3>
+            
+      </div>
+    </div>
   </div>
 <% end %>
+

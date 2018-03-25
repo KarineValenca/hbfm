@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando as Métricas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @metrics.each do |metric| %>
+      <tr>
+        <td><%= metric.name %></td>
+        <td><%= link_to 'Ver', metric, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Adicionar Dados', new_final_measure_path(:metric => metric.id), class: 'btn btn-secondary' %> </td>
+        <td><%= link_to 'Editar', edit_metric_path(metric), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Excluir', metric, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Métrica', new_metric_path, class: 'btn btn-success' %>

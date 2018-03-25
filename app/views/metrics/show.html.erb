@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @metric.name %>
+</p>
+
+<div>
+  <%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %>
+  <%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
+</div>

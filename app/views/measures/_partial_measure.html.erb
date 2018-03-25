@@ -1,0 +1,26 @@
+<div id="form_measures">
+    <%= f.hidden_field :metric, :value => @metric.id %>
+    <h3>Insira as Medidas</h3>
+    <div class="field">
+      <%= f.label 'Nome:' %><br>
+      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name'%>
+    </div>
+    <div class="field">
+      <%= f.label 'Valor:' %><br>
+      <%= f.number_field :value, id: 'value' %>
+    </div>
+    <div class="field">
+      <%= f.label 'Data de Coleta:'%><br>
+      <%= f.date_field :collection_date, id: 'date' %>
+    </div>
+    <div class="field">
+      <%= f.label 'Escala de Medição:' %><br>
+      <%= f.select(:scale, "<option>Nominal</option><option>Ordinal</option><option>Intervalar</option><option>Ratio</option><option>Absoluta</option>".html_safe) %>
+    </div>
+    <div class="field">
+      <%= f.label "Unidade de Medida:"%><br>
+      <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
+    </div>
+</div>
+
+ 
