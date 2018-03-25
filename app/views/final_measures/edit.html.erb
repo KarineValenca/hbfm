@@ -1,0 +1,22 @@
+<h3> <%= @final_measure.value %> </h3>
+
+<div class="row">
+    <div class="col">
+      <%- @measures.each do |measure| %>
+      <h3> Editar Medida </h3>
+      <%= form_for measure, remote: true do |f| %>
+		<div class="field">
+      		<%= f.label 'Nome:' %><br>
+      		<%= f.text_field :name, value: measure.name %>
+    	</div>
+
+    	<div class="field">
+      		<%= f.label 'Valor' %><br>
+      		<%= f.number_field :value, value: measure.value %>
+    	</div>
+	  <% end %>
+	  <br>
+	<% end %>
+    </div>
+  </div>
+<%= link_to "Finalizar", 'finalize_measure', :method => 'post', class: 'btn btn-primary' %>

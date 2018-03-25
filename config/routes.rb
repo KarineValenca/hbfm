@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   resources :final_measures do
     collection do
       post 'finalize_measure'
+      post '/:id/finalize_measure', to: 'final_measures#edit'
     end
+
   end
   
 end

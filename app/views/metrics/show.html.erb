@@ -4,9 +4,11 @@
 <h3> Valor das medidas </h3>
 
 <%- @final_measures.each do |final_measure| %>
-	<p> 
+	<div> 
 		<b>Valor:</b> <span> <%= final_measure.value %> </span> 
-		<b>Data de coleta:</b> <span> <%= final_measure.created_at.to_date.strftime("%d-%m-%Y") %></span></p> 
+		<b>Data de coleta:</b> <span> <%= final_measure.created_at.to_date.strftime("%d-%m-%Y") %></span>
+		<%= link_to 'Editar', edit_final_measure_path(final_measure), class: 'btn btn-warning' %>
+	</div> 
 <% end %>
 
 <div>
