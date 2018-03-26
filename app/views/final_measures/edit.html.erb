@@ -16,7 +16,7 @@
     	</div>
     	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
     	<div class="actions">
-        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
+        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit', data: { disable_with: 'Combine as medidas...' }%>
       </div>
 	  <% end %>
 	  <br>
@@ -35,3 +35,27 @@
     </div>
   </div>
 <%= link_to "Finalizar", metrics_path, class: 'btn btn-primary' %>
+
+<script>
+(function () {
+  var $doc = $(document)
+
+  $doc.on('ajax:send', 'form[data-remote=true]', function () {
+    var $form = $(this)
+    var $button = $form.find('[data-disable-with]')
+    if (!$button.length) return
+
+    $form.on('ajax:complete', function () {
+      // Use setTimeout to prevent race-condition when Rails re-enables the button
+      setTimeout(function () {
+        $button.each(function () { Rails.disableElement(this) })
+      }, 0)
+    })
+
+    // Prevent button from being cached in disabled state
+    $doc.one('turbolinks:before-cache', function () {
+      $button.each(function () { Rails.enableElement(this) })
+    })
+  })
+})()
+</script>
