@@ -13,6 +13,7 @@
   <div class="row">
     <div class="col">
       <div id='measures'>
+      <%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
         <%= render 'measures/partial_measure', f: f %>
       </div>
       <div class="actions">

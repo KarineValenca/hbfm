@@ -30,11 +30,15 @@ class FinalMeasuresController < ApplicationController
   		
 	end
 
+	def edit
+		@metric = Metric.find(@final_measure.metric_id)
+		@measures = Measure.where(:final_measure_id => @final_measure.id)
+	end
 
 	def update
-		puts "UPDATE MATHOD" * 90
 		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
 
+		puts "#{@final_measure.created_at}"
 		@final_value = 0
 		@final_measure.operation = ""
 
@@ -58,8 +62,9 @@ class FinalMeasuresController < ApplicationController
 		@final_measure.is_final = true
 
 		@final_measure.save
-
+		puts "AAA"
 		redirect_to metrics_path
+		puts "aaa"
 	end
 
 

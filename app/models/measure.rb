@@ -1,5 +1,4 @@
 class Measure < ApplicationRecord
-	belongs_to :unit_of_measurement
 	belongs_to :final_measure
 
 	validates :value, presence: true

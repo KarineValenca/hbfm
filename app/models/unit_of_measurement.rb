@@ -1,3 +1,3 @@
 class UnitOfMeasurement < ApplicationRecord
-	has_many :measures
+	has_many :metrics
 end

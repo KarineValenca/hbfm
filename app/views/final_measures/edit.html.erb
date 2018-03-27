@@ -1,0 +1,61 @@
+<h3> <%= @final_measure.value %> </h3>
+
+<div class="row">
+    <div class="col">
+      <%- @measures.each do |measure| %>
+      <h3> Editar Medida </h3>
+      <%= form_for measure, remote: true do |f| %>
+		<div class="field">
+      		<%= f.label 'Nome:' %><br>
+      		<%= f.text_field :name, value: measure.name %>
+    	</div>
+
+    	<div class="field">
+      		<%= f.label 'Valor' %><br>
+      		<%= f.number_field :value, value: measure.value %>
+    	</div>
+    	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
+    	<div class="actions">
+        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit', data: { disable_with: 'Combine as medidas...' }%>
+      </div>
+	  <% end %>
+	  <br>
+
+	<% end %>
+    </div>
+    <div class="col">
+      <div id='div-final-meaures'>
+        <h3> Combine as Medidas </h3>
+        <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
+        </ul>
+      </div>
+      <div id='final'>
+        <h3>Resultado Final</h3>        
+      </div>
+    </div>
+  </div>
+<%= link_to "Finalizar", metrics_path, class: 'btn btn-primary' %>
+
+<script>
+(function () {
+  var $doc = $(document)
+
+  $doc.on('ajax:send', 'form[data-remote=true]', function () {
+    var $form = $(this)
+    var $button = $form.find('[data-disable-with]')
+    if (!$button.length) return
+
+    $form.on('ajax:complete', function () {
+      // Use setTimeout to prevent race-condition when Rails re-enables the button
+      setTimeout(function () {
+        $button.each(function () { Rails.disableElement(this) })
+      }, 0)
+    })
+
+    // Prevent button from being cached in disabled state
+    $doc.one('turbolinks:before-cache', function () {
+      $button.each(function () { Rails.enableElement(this) })
+    })
+  })
+})()
+</script>
