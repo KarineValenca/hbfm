@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322172340) do
+ActiveRecord::Schema.define(version: 20180327000722) do
 
   create_table "final_measures", force: :cascade do |t|
     t.string "operation"
@@ -25,23 +25,22 @@ ActiveRecord::Schema.define(version: 20180322172340) do
   create_table "measures", force: :cascade do |t|
     t.string "name"
     t.float "value"
-    t.date "collection_date"
-    t.string "scale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "unit_of_measurement_id"
     t.integer "position"
     t.integer "final_measure_id"
     t.string "operator"
     t.integer "metric"
     t.index ["final_measure_id"], name: "index_measures_on_final_measure_id"
-    t.index ["unit_of_measurement_id"], name: "index_measures_on_unit_of_measurement_id"
   end
 
   create_table "metrics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "unit_of_measurement_id"
+    t.string "scale"
+    t.index ["unit_of_measurement_id"], name: "index_metrics_on_unit_of_measurement_id"
   end
 
   create_table "unit_of_measurements", force: :cascade do |t|

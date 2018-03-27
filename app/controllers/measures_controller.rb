@@ -72,7 +72,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :scale, :operator, :position, :metric,
-      								 :unit_of_measurement_id, :final_measure_id)
+      params.require(:measure).permit(:name, :value, :collection_date, :operator, :position, :metric,
+      								  :final_measure_id)
 	end
 end
