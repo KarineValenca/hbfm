@@ -25,6 +25,7 @@ class MetricsController < ApplicationController
 
 	def show
 		@final_measures = FinalMeasure.where(:metric_id => @metric.id, :is_final => true)
+		@measures = Measure.where(:final_measure_id => @final_measures)
 	end
 
 	private

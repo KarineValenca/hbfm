@@ -1,3 +1,20 @@
+<% if @metric.scale == "Nominal" || @metric.scale == "Ordinal" %>
+<div id="form_measures">
+    <%= f.hidden_field :metric, :value => @metric.id %>
+    
+    <h3>Insira as Medidas</h3>
+    <div class="field">
+      <%= f.label 'Nome:' %><br>
+      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name'%>
+    </div>
+    <div class="field">
+      <%= f.label 'Ocorrência:' %><br>
+      <%= f.number_field :value, id: 'value' %>
+    </div>
+  
+</div>
+
+<% else %>
 <div id="form_measures">
     <%= f.hidden_field :metric, :value => @metric.id %>
     
@@ -12,5 +29,5 @@
     </div>
   
 </div>
-
+<% end %>
  

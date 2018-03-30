@@ -36,25 +36,28 @@ class FinalMeasuresController < ApplicationController
 	end
 
 	def update
-		@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
+		@metric = Metric.find(@final_measure.metric_id)
+		if @metric.scale == "Absoluta" || @metric.scale == "Ratio" || @metric.scale == "Intervalar"
+			@measures = Measure.where(final_measure_id: @final_measure.id).order(:position)
 
-		puts "#{@final_measure.created_at}"
-		@final_value = 0
-		@final_measure.operation = ""
+			@final_value = 0
+			@final_measure.operation = ""
 
 
-     	@measures.each do |measure|
-     		if measure == @measures.last
-     			measure.operator = ""
-     		end
-     		@final_measure.operation << measure.value.to_s + measure.operator
-     	end
+	     	@measures.each do |measure|
+	     		if measure == @measures.last
+	     			measure.operator = ""
+	     		end
+	     		@final_measure.operation << measure.value.to_s + measure.operator
+	     	end
 
-     	#@final_measure.value = 0
-     	@final_measure.value = eval(@final_measure.operation)
-     	@final_measure.save
-
-     	
+	     	#@final_measure.value = 0
+	     	@final_measure.value = eval(@final_measure.operation)
+	     	@final_measure.save
+		else
+			##nothing to do
+			
+     	end	
 	end
 
 	def finalize_measure
@@ -62,9 +65,7 @@ class FinalMeasuresController < ApplicationController
 		@final_measure.is_final = true
 
 		@final_measure.save
-		puts "AAA"
 		redirect_to metrics_path
-		puts "aaa"
 	end
 
 

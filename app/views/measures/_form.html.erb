@@ -20,17 +20,27 @@
         <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
       </div>
     </div>
-    <div class="col">
-      <div id='div-final-meaures'>
-        <h3> Combine as Medidas </h3>
-        <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
-        </ul>
+    <% if @metric.scale == 'Nominal' || @metric.scale == 'Ordinal' %>
+      <div class="col">
+          <div id='div-final-meaures'>
+            <h3> Valor das medidas </h3>
+            <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
+            </ul>
+          </div>
       </div>
-      <div id='final'>
-        <h3>Resultado Final</h3>
-            
+    <% else %>
+      <div class="col">
+        <div id='div-final-meaures'>
+          <h3> Combine as Medidas </h3>
+          <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
+          </ul>
+        </div>
+        <div id='final'>
+          <h3>Resultado Final</h3>
+              
+        </div>
       </div>
-    </div>
+      <%end%>
   </div>
 <% end %>
 

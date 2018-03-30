@@ -1,0 +1,18 @@
+<%= form_for @measure do |f| %>
+<h2>Editando Medida</h2>
+<div class="field">
+      		<%= f.label 'Nome:' %><br>
+      		<%= f.text_field :name, value: @measure.name %>
+    	</div>
+
+    	<div class="field">
+      		<%= f.label 'Valor' %><br>
+      		<%= f.number_field :value, value: @measure.value %>
+    	</div>
+    	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit 'Salvar', class: 'btn btn-success', id: 'submit'%>
+	</div>
+<% end %>

@@ -5,22 +5,33 @@
 <p> Escala de Medição: <%= @metric.scale %> </p>
 </div>
 
-<div class="">
-   <%= area_chart @final_measures.group_by_day(:created_at).sum(:value) %>
-</div>
+<% if @metric.scale == "Nominal" || @metric.scale == "Ordinal" %>
+	<%= pie_chart @measures.group(:name).sum(:value) %>
+	<h3> Valor das medidas </h3>
+	<%- @measures.each do |measure| %>
+		<div>
+		<b> Nome:</b> <span><%= measure.name %></span>
+		<b> Ocorrência:</b> <span><%= measure.value %></span>
+		<%= link_to 'Editar', edit_measure_path(measure), class: 'btn btn-warning' %>
+	<% end %>
+<% else %>
+	<div class="">
+	   <%= area_chart @final_measures.group_by_day(:created_at).sum(:value) %>
+	</div>
+	<div>
+	<h3> Valor das medidas </h3>
 
-<div>
-<h3> Valor das medidas </h3>
-
-<%- @final_measures.each do |final_measure| %>
-	<div> 
-		<b>Valor:</b> <span> <%= final_measure.value %> </span> 
-		<b>Data de coleta:</b> <span> <%= final_measure.created_at.to_date.strftime("%d-%m-%Y") %></span>
-		<%= link_to 'Editar', edit_final_measure_path(final_measure), class: 'btn btn-warning' %>
-	</div> 
+	<%- @final_measures.each do |final_measure| %>
+		<div> 
+			<b>Valor:</b> <span> <%= final_measure.value %> </span> 
+			<b>Data de coleta:</b> <span> <%= final_measure.created_at.to_date.strftime("%d-%m-%Y") %></span>
+			<%= link_to 'Editar', edit_final_measure_path(final_measure), class: 'btn btn-warning' %>
+		</div> 
+	<% end %>
+	</div>
+	
 <% end %>
-</div>
 <div>
-  <%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %>
-  <%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
-</div>
+	  <%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %>
+	  <%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
+	</div>
