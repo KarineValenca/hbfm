@@ -5,6 +5,10 @@
 <p> Escala de Medição: <%= @metric.scale %> </p>
 </div>
 
+<div class="">
+   <%= area_chart @final_measures.group_by_day(:created_at).sum(:value) %>
+</div>
+
 <div>
 <h3> Valor das medidas </h3>
 

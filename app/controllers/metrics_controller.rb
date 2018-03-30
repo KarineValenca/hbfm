@@ -35,4 +35,5 @@ class MetricsController < ApplicationController
     def metric_params
       params.require(:metric).permit(:name, :scale, :unit_of_measurement_id)
 	end
+
 end
