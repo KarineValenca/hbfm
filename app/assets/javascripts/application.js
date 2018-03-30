@@ -12,6 +12,8 @@
 //
 //= require jquery3
 //= require jquery-ui/widget 
+//= require Chart.bundle
+//= require chartkick
 //= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets

@@ -45,10 +45,20 @@ class MeasuresController < ApplicationController
 
 	end
 
+	def edit
+		@final_measure = FinalMeasure.find(@measure.final_measure_id)
+	end
+
 	def update
-		puts "UPDATE METHOD"
 		@measure = Measure.find(params[:id])
+		@final_measure = FinalMeasure.find(@measure.final_measure_id)
+		@metric = Metric.find(@final_measure.metric_id)
 		@measure.update_attributes(measure_params)
+
+		if @metric.scale == "Nominal" || @metric.scale == "Ordinal"
+    		redirect_to @metric
+  		end
+
 	end
 
 	def update_operator
