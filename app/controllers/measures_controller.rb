@@ -14,7 +14,7 @@ class MeasuresController < ApplicationController
 		# TODO: FIX THIS
 		if  FinalMeasure.count == 0 || FinalMeasure.last.is_final
 			puts "Criando medida final"
-			FinalMeasure.create!(:metric_id => @measure.metric)
+			FinalMeasure.create!(:collect_date => @measure.collect_date, :metric_id => @measure.metric)
 			respond_to do |format|
 				format.js
 			end
@@ -82,7 +82,7 @@ class MeasuresController < ApplicationController
     end
 
     def measure_params
-      params.require(:measure).permit(:name, :value, :collection_date, :operator, :position, :metric,
+      params.require(:measure).permit(:name, :value, :collect_date, :operator, :position, :metric,
       								  :final_measure_id)
 	end
 end
