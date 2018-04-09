@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409132646) do
+ActiveRecord::Schema.define(version: 20180409145419) do
 
   create_table "final_measures", force: :cascade do |t|
     t.string "operation"
@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(version: 20180409132646) do
     t.datetime "updated_at", null: false
     t.integer "unit_of_measurement_id"
     t.string "scale"
+    t.integer "user_id"
     t.index ["unit_of_measurement_id"], name: "index_metrics_on_unit_of_measurement_id"
+    t.index ["user_id"], name: "index_metrics_on_user_id"
   end
 
   create_table "unit_of_measurements", force: :cascade do |t|
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 20180409132646) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_unit_of_measurements_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
