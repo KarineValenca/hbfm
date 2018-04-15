@@ -38,6 +38,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'acts_as_list'
 gem 'chartkick'
 gem 'groupdate'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

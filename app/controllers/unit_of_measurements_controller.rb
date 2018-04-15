@@ -1,8 +1,9 @@
 class UnitOfMeasurementsController < ApplicationController
 	before_action :set_unit_of_measurement, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
 
 	def index
-   		@unit_of_measurements = UnitOfMeasurement.all
+   		@unit_of_measurements = UnitOfMeasurement.where(user_id: current_user.id)
 	end
 
 	def new
@@ -11,6 +12,7 @@ class UnitOfMeasurementsController < ApplicationController
 
 	def create
 		@unit_of_measurement = UnitOfMeasurement.new(unit_of_measurement_params)
+		@unit_of_measurement.user_id = current_user.id
 
 		respond_to do |format|
       		if @unit_of_measurement.save
@@ -24,6 +26,14 @@ class UnitOfMeasurementsController < ApplicationController
 	end
 
 	def show
+		
+		if  @unit_of_measurement.user_id == current_user.id
+			#nothing to do
+		else
+			respond_to do |format|
+				format.html { redirect_to unit_of_measurements_path, notice: 'Você não pode acessar essa página' }
+			end
+		end
 	end
 
 	private
@@ -32,6 +42,6 @@ class UnitOfMeasurementsController < ApplicationController
     end
 
     def unit_of_measurement_params
-      params.require(:unit_of_measurement).permit(:name, :initials)
+      params.require(:unit_of_measurement).permit(:name, :initials, :user_id)
 	end
 end

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label "Unidade de Medida:"%><br>
-    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
+    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.where(user_id: current_user.id).collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
   </div>
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success'%>
