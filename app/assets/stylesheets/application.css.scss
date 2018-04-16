@@ -14,5 +14,24 @@
  *= require_self
  */
 
-@import "bootstrap"
+@import "bootstrap";
+
+.jumbotron {
+	margin-top: 3%;
+	background-color: light-grey;
+}
+
+.container {
+	text-align: center;
+}
+
+.container .jumbotron h1{
+	text-align: center;
+}
+
+.container .jumbotron h5{
+	text-align: center;
+}
+
+
 

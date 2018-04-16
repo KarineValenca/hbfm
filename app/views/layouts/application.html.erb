@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">HBFM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,8 +39,12 @@
         <% end %>
   </div>
 </nav>
+    <% if notice %>
+      <p class="alert alert-warning"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
   </body>
 </html>
