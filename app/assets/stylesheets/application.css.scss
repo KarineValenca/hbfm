@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import "font-awesome";
+
+.jumbotron {
+	margin-top: 3%;
+	background-color: light-grey;
+}
+
+.container {
+	text-align: center;
+}
+
+.container .jumbotron h1{
+	text-align: center;
+}
+
+.container .jumbotron h5{
+	text-align: center;
+}
+
+.show-gray {
+	background-color: #f2f2f2;
+	margin:25px 200px 25px 200px;
+	padding: 10px;
+}
+
+.form {
+	text-align: left;
+}
+
+.text-form{
+	margin: 25px 25px 25px 0px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  padding-left: 1.3em;
+}
+
+#ul-measures.ui-sortable li:before {
+  content: "\f0c9"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}
+
+.ui-sortable{
+  	color: #777;
+  	cursor: move;
+  	backgroun-color: red;
+}
+

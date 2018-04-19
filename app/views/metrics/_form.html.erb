@@ -1,3 +1,5 @@
+<div class="form">
+  <div class="text-form">
 <%= form_for(@metric) do |f| %>
   <% if @metric.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +14,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Nome:' %><br>
+    <strong><%= f.label 'Nome:' %><br></strong>
     <%= f.text_field :name, maxlength: 200, size: 13%>
   </div>
   <div class="field">
-    <%= f.label 'Escala de Medição:' %><br>
+    <strong><%= f.label 'Escala de Medição:' %><br></strong>
     <%= f.select(:scale, "<option>Nominal</option><option>Ordinal</option><option>Intervalar</option><option>Ratio</option><option>Absoluta</option>".html_safe) %>
   </div>
   <div class="field">
-    <%= f.label "Unidade de Medida:"%><br>
+    <strong><%= f.label "Unidade de Medida:"%><br></strong>
     <%= f.select :unit_of_measurement_id, UnitOfMeasurement.where(user_id: current_user.id).collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
+  </div>
   </div>
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success'%>
-  </div>
+ 
 <% end %>

@@ -1,22 +1,29 @@
-<h3> <%= @final_measure.value %> </h3>
+<div class="container">
+<h3>Medida: <%= @final_measure.value %> </h3>
 
 <div class="row">
     <div class="col">
       <%- @measures.each do |measure| %>
+      <div class="form">
       <h3> Editar Medida </h3>
-      <%= form_for measure, remote: true do |f| %>
-		<div class="field">
-      		<%= f.label 'Nome:' %><br>
-      		<%= f.text_field :name, value: measure.name %>
-    	</div>
+      
+        <div class="text-form">
+          <%= form_for measure, remote: true do |f| %>
+        
+  		  <div class="field">
+        		<%= f.label 'Nome:' %><br>
+        		<%= f.text_field :name, value: measure.name %>
+      	</div>
 
-    	<div class="field">
-      		<%= f.label 'Valor' %><br>
-      		<%= f.number_field :value, value: measure.value %>
-    	</div>
-    	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
-    	<div class="actions">
-        <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit', data: { disable_with: 'Combine as medidas...' }%>
+      	<div class="field">
+        		<%= f.label 'Valor' %><br>
+        		<%= f.number_field :value, value: measure.value %>
+      	</div>
+      	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
+        </div>
+      	<div class="actions">
+          <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit', data: { disable_with: 'Combine as medidas...' }%>
+        </div>
       </div>
 	  <% end %>
 	  <br>
@@ -34,8 +41,10 @@
       </div>
     </div>
   </div>
-<%= link_to "Finalizar", metrics_path, class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
+<%= link_to "Finalizar", metrics_path, class: 'btn btn-success' %>
 
+</div>
 <script>
 (function () {
   var $doc = $(document)

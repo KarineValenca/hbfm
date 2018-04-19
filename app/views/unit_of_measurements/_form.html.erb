@@ -1,3 +1,5 @@
+<div class="form">
+  <div class="text-form">
 <%= form_for(@unit_of_measurement) do |f| %>
   <% if @unit_of_measurement.errors.any? %>
     <div id="error_explanation">
@@ -12,14 +14,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Nome' %><br>
-    <%= f.text_field :name, maxlength: 40%>
+    <strong><%= f.label 'Nome:' %><br></strong>
+    <%= f.text_field :name, maxlength: 20%>
   </div>
   <div class="field">
-    <%= f.label 'Sigla' %><br>
+    <strong><%= f.label 'Sigla:' %><br></strong>
     <%= f.text_field :initials, maxlength: 7 %>
+  </div>
   </div>
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success' %>
-  </div>
+  
 <% end %>
+
