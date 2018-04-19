@@ -10,11 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
 
 @import "bootstrap";
+@import "font-awesome";
 
 .jumbotron {
 	margin-top: 3%;
@@ -46,3 +48,26 @@
 .text-form{
 	margin: 25px 25px 25px 0px;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  padding-left: 1.3em;
+}
+
+#ul-measures.ui-sortable li:before {
+  content: "\f0c9"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}
+
+.ui-sortable{
+  	color: #777;
+  	cursor: move;
+  	backgroun-color: red;
+}
+
