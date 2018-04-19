@@ -1,12 +1,18 @@
-<p>
-  <strong>Nome:</strong>
-  <%= @unit_of_measurement.name %>
-</p>
+<div class="container">
+<h2>Unidade de Medida: <%= @unit_of_measurement.name %></h2>
+	<div class="show-gray">
 
-<p>
-  <strong>Sigla:</strong>
-  <%= @unit_of_measurement.initials %>
-</p>
+		<p>
+		  <strong>Nome:</strong>
+		  <%= @unit_of_measurement.name %>
+		</p>
 
-<%= link_to 'Edit', edit_unit_of_measurement_path(@unit_of_measurement), class: 'btn btn-warning' %>
-<%= link_to 'Back', unit_of_measurements_path, class: 'btn btn-primary' %>
+		<p>
+		  <strong>Sigla:</strong>
+		  <%= @unit_of_measurement.initials %>
+		</p>
+
+		<%= link_to 'Editar', edit_unit_of_measurement_path(@unit_of_measurement), class: 'btn btn-warning' %>
+		<%= link_to 'Voltar', unit_of_measurements_path, class: 'btn btn-primary' %>
+	</div>
+</div>

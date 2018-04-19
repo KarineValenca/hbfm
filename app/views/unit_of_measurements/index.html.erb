@@ -1,22 +1,23 @@
-<h1>Listing Unit Of Measurements</h1>
+<div class="container">
+<h1>Unidades de Medida</h1>
 
-<table>
+<table class="table table-striped" align="center">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>Nome</th>
+      <th>Sigla</th>
+      <th colspan="3">Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @unit_of_measurements.each do |unit_of_measurement| %>
       <tr>
-        <td><%= unit_of_measurement.name %></td>
-        <td><%= unit_of_measurement.initials %></td>
-        <td><%= link_to 'Show', unit_of_measurement, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Edit', edit_unit_of_measurement_path(unit_of_measurement), class: 'btn btn-success' %></td>
-        <td><%= link_to 'Destroy', unit_of_measurement, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %></td>
+        <td class="col-md-4"><%= unit_of_measurement.name %></td>
+        <td class="col-md-4"><%= unit_of_measurement.initials %></td>
+        <td class="col-md-4"><%= link_to 'Ver', unit_of_measurement, class: 'btn btn-info' %>
+        <%= link_to 'Editar', edit_unit_of_measurement_path(unit_of_measurement), class: 'btn btn-success' %>
+       <%= link_to 'Excluir', unit_of_measurement, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,6 @@
 
 <br>
 
-<%= link_to 'New Unit of measurement', new_unit_of_measurement_path, class: 'btn btn-success' %>
+<%= link_to 'Nova Unidade de Medida', new_unit_of_measurement_path, class: 'btn btn-success' %>
+<%= link_to 'Voltar', '/', class: 'btn btn-primary' %>
+</div>
