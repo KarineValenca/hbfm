@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20180409145419) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "final_measures", force: :cascade do |t|
     t.string "operation"
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "metric_id"
+    t.bigint "metric_id"
     t.boolean "is_final"
     t.date "collect_date"
     t.index ["metric_id"], name: "index_final_measures_on_metric_id"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180409145419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
-    t.integer "final_measure_id"
+    t.bigint "final_measure_id"
     t.string "operator"
     t.integer "metric"
     t.date "collect_date"
@@ -40,9 +43,9 @@ ActiveRecord::Schema.define(version: 20180409145419) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "unit_of_measurement_id"
+    t.bigint "unit_of_measurement_id"
     t.string "scale"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["unit_of_measurement_id"], name: "index_metrics_on_unit_of_measurement_id"
     t.index ["user_id"], name: "index_metrics_on_user_id"
   end
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180409145419) do
     t.string "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_unit_of_measurements_on_user_id"
   end
 
@@ -73,4 +76,9 @@ ActiveRecord::Schema.define(version: 20180409145419) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "final_measures", "metrics"
+  add_foreign_key "measures", "final_measures"
+  add_foreign_key "metrics", "unit_of_measurements"
+  add_foreign_key "metrics", "users"
+  add_foreign_key "unit_of_measurements", "users"
 end
