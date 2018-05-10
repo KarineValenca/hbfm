@@ -15,8 +15,7 @@
       <tr>
         <td class="col-md-4"><%= unit_of_measurement.name %></td>
         <td class="col-md-4"><%= unit_of_measurement.initials %></td>
-        <td class="col-md-4"><%= link_to 'Ver', unit_of_measurement, class: 'btn btn-info' %>
-        <%= link_to 'Editar', edit_unit_of_measurement_path(unit_of_measurement), class: 'btn btn-success' %>
+        <td class="col-md-4" style='white-space: nowrap'><%= link_to 'Ver', unit_of_measurement, class: 'btn btn-info' %> <%= link_to 'Editar', edit_unit_of_measurement_path(unit_of_measurement), class: 'btn btn-success' %>
        <%= link_to 'Excluir', unit_of_measurement, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>

@@ -13,7 +13,7 @@
     <% @metrics.each do |metric| %>
       <tr>
         <td class="col-md-6"><%= metric.name %></td>
-        <td><%= link_to 'Ver', metric, class: 'btn btn-info' %>
+        <td style='white-space: nowrap'><%= link_to 'Ver', metric, class: 'btn btn-info' %>
         <%= link_to 'Adicionar Dados', new_final_measure_path(:metric => metric.id), class: 'btn btn-secondary' %>
         <%= link_to 'Editar', edit_metric_path(metric), class: 'btn btn-success' %>
         <%= link_to 'Excluir', metric, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%></td>
