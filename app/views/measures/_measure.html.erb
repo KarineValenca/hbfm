@@ -2,15 +2,22 @@
     	<hidden id="measure_id_<%= measure.id %>"><%= measure.id %></hidden>
 		<span id="measure_name"><%= measure.name %></span>
 		<span id="measure_value" class="value"><%= measure.value %></span>
+		<% if @metric.scale == "Absoluta" || @metric.scale == "Ratio" || @metric.scale == "Intervalar" %>
 		<select id="operator_<%= measure.id %>">
-			<option value="">=</option><option>+</option><option>-</option><option>*</option><option>/</option>
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="+"> </option>
 		</select>
+		<%end %>
 	<script>
 		$(function(){
 			$('select#operator_<%= measure.id %>').change( function() {
 			  $.post('/measures/update_operator',{operator: $('option:selected',this).val(), measure: $('#measure_id_<%= measure.id %>').text()});
 			 });
 		});
+
 	</script>
 <% end %>
 
