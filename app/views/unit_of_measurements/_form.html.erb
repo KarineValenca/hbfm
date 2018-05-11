@@ -3,11 +3,9 @@
 <%= form_for(@unit_of_measurement) do |f| %>
   <% if @unit_of_measurement.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@unit_of_measurement.errors.count, "error") %> prohibited this unit_of_measurement from being saved:</h2>
-
       <ul>
       <% @unit_of_measurement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p class="alert alert-danger"><%= message %></p>
       <% end %>
       </ul>
     </div>
