@@ -7,22 +7,30 @@ class MetricsController < ApplicationController
 	end
 
 	def new
-		@metric = Metric.new
+		@unit_of_measurements = UnitOfMeasurement.where(user_id: current_user.id)
+		puts "#{@unit_of_measurements.length}"
+		if @unit_of_measurements.length > 0
+			@metric = Metric.new
+		else
+			redirect_to new_unit_of_measurement_path, notice: 'Você precisa cadastrar pelo menos uma unidade de medida antes de cadastrar uma métrica'
+		end
 	end
 
 	def create
-		@metric = Metric.new(metric_params)
-		@metric.user_id = current_user.id
+		
+			@metric = Metric.new(metric_params)
+			@metric.user_id = current_user.id
 
-		respond_to do |format|
-      		if @metric.save
-        		format.html { redirect_to @metric, notice: 'Métrica Criada com Sucesso.' }
-        		format.json { render :show, status: :created, location: @metric}
-      		else
-		        format.html { render :new }
-		        format.json { render json: @metric.errors, status: :unprocessable_entity }
-      		end
-		end
+			respond_to do |format|
+	      		if @metric.save
+	        		format.html { redirect_to @metric, notice: 'Métrica Criada com Sucesso.' }
+	        		format.json { render :show, status: :created, location: @metric}
+	      		else
+			        format.html { render :new }
+			        format.json { render json: @metric.errors, status: :unprocessable_entity }
+	      		end
+			end
+		
 	end
 
 	def show
