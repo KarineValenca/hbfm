@@ -3,6 +3,7 @@ class Measure < ApplicationRecord
 
 	validates :value, presence: true
 	validates :name, presence: true
+	validates :collect_date, presence: true
 	before_save :set_position
 
 	protected
