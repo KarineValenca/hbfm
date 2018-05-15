@@ -1,5 +1,10 @@
 <div class="container">
-	<h1>Métrica: <%= @metric.name %>  <%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %></h1>
+	<h2>Métrica: <%= @metric.name %>  
+	<%= link_to edit_metric_path(@metric) do %>
+  		<i class="fa fa-pencil"></i>
+	<% end %>
+	
+</h2>
 	<p><strong>Unidade de Medida:</strong> <%= @metric.unit_of_measurement.name %></p>
 	<p><strong>Escala de Medição:</strong> <%= @metric.scale %> </p>
 	
