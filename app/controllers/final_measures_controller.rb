@@ -52,6 +52,7 @@ class FinalMeasuresController < ApplicationController
 
 	     	#@final_measure.value = 0
 			@final_measure.value = eval(@final_measure.operation)
+	     	
 	     	@final_measure.save
 		else
 			##nothing to do
@@ -61,6 +62,7 @@ class FinalMeasuresController < ApplicationController
 
 	def finalize_measure
 		@final_measure = FinalMeasure.last
+		update
 		@final_measure.is_final = true
 
 		@final_measure.save

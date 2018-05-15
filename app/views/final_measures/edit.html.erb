@@ -19,6 +19,10 @@
         		<%= f.label 'Valor' %><br>
         		<%= f.number_field :value, value: measure.value %>
       	</div>
+        <div class="field">
+            <%= f.label 'Valor' %><br>
+            <%= f.date_field :collect_date, value: measure.collect_date, required: true %>
+        </div>
       	<%= f.hidden_field :final_measure_id, :value => @final_measure.id %>
         </div>
       	<div class="actions">
@@ -42,7 +46,7 @@
     </div>
   </div>
   <%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
-<%= link_to "Finalizar", metrics_path, class: 'btn btn-success' %>
+  <%= link_to "Finalizar", metrics_path, class: 'btn btn-success' %>
 
 </div>
 <script>
