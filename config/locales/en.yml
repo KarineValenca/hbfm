@@ -38,6 +38,14 @@ en:
         password_confirmation: "Confirmação de senha"
       metric:
         unit_of_measurement: "Unidade de Medida"
+        name: "Nome"
+      unit_of_measurement: 
+        name: "Nome"
+        initials: "Sigla"
+      measure:
+        name: "Nome"
+        value: "Valor"
+        collect_date: "Data de coleta" 
     errors:
       models:
         user:
@@ -50,5 +58,21 @@ en:
               confirmation: não é igual a senha
         metric:
           attributes:
+            name:
+              blank: não pode estar em branco
             unit_of_measurement:
               required: não pode estar em branco
+        unit_of_measurement: 
+          attributes:
+            name: 
+              blank: não pode estar em branco
+            initials: 
+              blank: não pode estar em branco
+        measure:
+          attributes:
+            name:
+              blank: não pode estar em branco
+            value:
+              blank: não pode estar em branco
+            collect_date: 
+              blank: não pode estar em branco
