@@ -5,11 +5,11 @@
     <h3>Insira as Medidas</h3>
     <div class="field">
       <strong><%= f.label 'Nome:' %><br></strong>
-      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name'%>
+      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name', required: true%>
     </div>
     <div class="field">
       <strong><%= f.label 'Ocorrência:' %><br></strong>
-      <%= f.number_field :value, id: 'value' %>
+      <%= f.number_field :value, id: 'value', required: true %>
     </div>
   
 </div>
@@ -21,15 +21,15 @@
     <h3>Insira as Medidas</h3>
     <div class="field">
       <%= f.label 'Nome:' %><br>
-      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name'%>
+      <%= f.text_field :name, maxlength: 200, size: 13, id: 'name', required: true%>
     </div>
     <div class="field">
       <%= f.label 'Valor:' %><br>
-      <%= f.number_field :value, id: 'value' %>
+      <%= f.number_field :value, id: 'value', required: true %>
     </div>
     <div class="field">
       <%= f.label 'Data de Coleta:' %><br>
-      <%= f.date_field :collect_date, id: 'value' %>
+      <%= f.date_field :collect_date, id: 'date', required: true %>
     </div>
   
 </div>
