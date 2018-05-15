@@ -1,7 +1,8 @@
 <div class="container">
-	<h1>Métrica: <%= @metric.name %> </h1>
+	<h1>Métrica: <%= @metric.name %>  <%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %></h1>
 	<p><strong>Unidade de Medida:</strong> <%= @metric.unit_of_measurement.name %></p>
 	<p><strong>Escala de Medição:</strong> <%= @metric.scale %> </p>
+	
 	
 	<% if @metric.scale == "Nominal" || @metric.scale == "Ordinal" %>
 	<div class="show-gray">
@@ -34,7 +35,7 @@
 		
 	<% end %>
 	<div>
-		<%= link_to 'Editar', edit_metric_path(@metric), class: 'btn btn-warning' %>
+			<%= link_to 'Adicionar Dados', new_final_measure_path(:metric => @metric.id), class: 'btn btn-secondary' %>
 		<%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
 	</div>
 </div>
