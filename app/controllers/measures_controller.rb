@@ -27,7 +27,7 @@ class MeasuresController < ApplicationController
 
 		
 		@measure.final_measure = @final_measure
-		@measure.operator = "="
+		@measure.operator = "+"
 
       		if @measure.save
       			respond_to do |format|
