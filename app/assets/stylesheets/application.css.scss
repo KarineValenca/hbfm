@@ -71,3 +71,31 @@ li {
   	backgroun-color: red;
 }
 
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+
+
+ul.navbar-nav:nth-child(1) > li:nth-child(1) > a:nth-child(1){
+  color: white;
+}
+
+ul.navbar-nav:nth-child(1) > li:nth-child(2) > a:nth-child(1) {
+  color: white;
+}
+
+#navbarDropdown {
+  color: white;
+}
+
+ul.navbar-nav:nth-child(1) > li:nth-child(1) > a:nth-child(1):hover{
+  color: #d3d3d3;
+}
+
+ul.navbar-nav:nth-child(1) > li:nth-child(2) > a:nth-child(1):hover {
+  color: #d3d3d3;
+}
+
+#navbarDropdown:hover {
+  color: #d3d3d3;
+}
