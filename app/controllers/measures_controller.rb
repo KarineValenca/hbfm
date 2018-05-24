@@ -19,6 +19,7 @@ class MeasuresController < ApplicationController
 				format.js
 			end
 		else
+			@measure.collect_date == FinalMeasure.last.collect_date
 			puts 'Não necessário criar medida final'
 		end
 
