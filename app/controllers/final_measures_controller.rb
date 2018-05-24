@@ -12,7 +12,7 @@ class FinalMeasuresController < ApplicationController
 		@final_measure = FinalMeasure.new(final_measure_params)
       	if @final_measure.save
       		respond_to do |format|
-    			format.html { redirect_to final_measures_url }
+    			format.html { redirect_to final_measure_url }
 			    format.js
   			end
   			
@@ -65,8 +65,9 @@ class FinalMeasuresController < ApplicationController
 		update
 		@final_measure.is_final = true
 
+		@metric = Metric.find(@final_measure.metric_id)
 		@final_measure.save
-		redirect_to metrics_path
+		redirect_to @metric
 	end
 
 

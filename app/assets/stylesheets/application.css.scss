@@ -99,3 +99,16 @@ ul.navbar-nav:nth-child(1) > li:nth-child(2) > a:nth-child(1):hover {
 #navbarDropdown:hover {
   color: #d3d3d3;
 }
+
+.btnfa {
+    border: none; /* Remove borders */
+    color: DodgerBlue; /* White text */
+    background-color: white; /* Some padding */
+    font-size: 18px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btnfa:hover {
+    color: RoyalBlue;
+}

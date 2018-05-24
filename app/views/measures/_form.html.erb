@@ -18,14 +18,14 @@
           <%= render 'measures/partial_measure', f: f %>
         </div>
         <div class="actions">
-          <%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit'%>
+          
         </div>
       </div>
     </div>
     <% if @metric.scale == 'Nominal' || @metric.scale == 'Ordinal' %>
       <div class="col">
           <div id='div-final-meaures'>
-            <h3> Valor das medidas </h3>
+            <h3> Valor das medida </h3>
             <ul id='ul-measures' data-update-url="<%= sort_measures_url %>"">
             </ul>
           </div>
@@ -45,4 +45,6 @@
       <%end%>
   </div>
 <% end %>
+
+
 

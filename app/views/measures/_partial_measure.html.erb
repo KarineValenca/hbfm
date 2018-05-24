@@ -3,6 +3,10 @@
     <%= f.hidden_field :metric, :value => @metric.id %>
     
     <h3>Passo 1: Insira as Medidas</h3>
+     <div class="field">
+      <strong><%= f.label 'Data' %><br></strong>
+      <%= f.date_field :collect_date, required: true %>
+    </div>
     <div class="field">
       <strong><%= f.label 'Nome:' %><br></strong>
       <%= f.text_field :name, maxlength: 200, size: 13, id: 'name', required: true%>
@@ -19,6 +23,11 @@
     <%= f.hidden_field :metric, :value => @metric.id %>
     
     <h3>Passo 1: Insira as Medidas</h3>
+    <em>* Insira apenas medidas referentes à mesma data</em>
+    <div class="date-field">
+      <%= f.label 'Data de Coleta:' %><br>
+      <%= f.date_field :collect_date, id: 'date'%>
+    </div>
     <div class="field">
       <%= f.label 'Nome:' %><br>
       <%= f.text_field :name, maxlength: 200, size: 13, id: 'name', required: true%>
@@ -27,10 +36,8 @@
       <%= f.label 'Valor:' %><br>
       <%= f.number_field :value, id: 'value', required: true %>
     </div>
-    <div class="field">
-      <%= f.label 'Data de Coleta:' %><br>
-      <%= f.date_field :collect_date, id: 'date', required: true %>
-    </div>
-  
 </div>
 <% end %>
+
+<%= f.submit 'Salvar', class: 'btn btn-success', remote: true, id: 'submit-measure'%>
+
