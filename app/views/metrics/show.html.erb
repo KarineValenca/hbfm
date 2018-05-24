@@ -23,7 +23,7 @@
 		<% end %>
 	<% else %>
 		<div class="show-gray">
-		  <%= area_chart @final_measures.group_by_day(:collect_date).sum(:value) %>
+		  <%= area_chart @final_measures.group_by_day(:collect_date, series: false).sum(:value) %>
 		</div>
 		
 		<div>
