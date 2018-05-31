@@ -33,6 +33,20 @@ class MetricsController < ApplicationController
 		
 	end
 
+	def update
+		@metric = Metric.find(params[:id])
+		@metric.update_attributes(metric_params)
+		respond_to do |format|
+      		if @metric.save
+        		format.html { redirect_to @metric, notice: 'Métrica Atualizada com Sucesso.' }
+        		format.json { render :show, status: :created, location: @metric }
+      		else
+		        format.html { render :new }
+		        format.json { render json: @metric.errors, status: :unprocessable_entity }
+      		end
+		end
+	end
+
 	def show
 		if  @metric.user_id == current_user.id
 			@final_measures = FinalMeasure.where(:metric_id => @metric.id, :is_final => true)
