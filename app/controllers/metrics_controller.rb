@@ -59,6 +59,12 @@ class MetricsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@metric = Metric.find(params[:id])
+		@metric.destroy
+		redirect_to @metric, notice: 'Métrica Excluída com Sucesso.'
+	end
+
 	private
     def set_metric
       @metric = Metric.find(params[:id])
