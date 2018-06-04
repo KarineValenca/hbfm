@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     collection do
       post 'finalize_measure'
       post '/:id/finalize_measure', to: 'final_measures#edit'
+      post 'import/:id(.:format)', to: "final_measures#import",  as: :import
+
     end
 
   end
