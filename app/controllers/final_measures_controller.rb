@@ -70,6 +70,12 @@ class FinalMeasuresController < ApplicationController
 		redirect_to @metric
 	end
 
+	def import
+		@metric = Metric.find(params[:id])
+		FinalMeasure.import(params[:file], @metric)
+		redirect_to @metric, notice: "Medidas importadas com sucesso"
+	end
+
 
 	private
     def set_final_measure
