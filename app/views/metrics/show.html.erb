@@ -14,6 +14,8 @@
 	<div class="show-gray">
 		<%= pie_chart @measures.group(:name).sum(:value) %>
 	</div>
+	<div>
+				
 		<h3> Valor das medidas </h3>
 		<%- @measures.each do |measure| %>
 			<div>
@@ -27,7 +29,7 @@
 		  <%= area_chart @final_measures.group_by_day(:collect_date, series: false).sum(:value) %>
 		</div>
 		
-		<div>
+		
 		<h3> Valor das medidas </h3>
 
 		<%- @final_measures.each do |final_measure| %>
@@ -37,16 +39,23 @@
 				<%= link_to 'Editar', edit_final_measure_path(final_measure), class: 'btn btn-warning' %>
 			</div> 
 		<% end %>
-	</div>
+	
 		
 	<% end %>
-	<div>
-			<%= link_to 'Adicionar Dados', new_final_measure_path(:metric => @metric.id), class: 'btn btn-success' %>
-		<%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
+
+		<%= link_to 'Adicionar Dados', new_final_measure_path(:metric => @metric.id), class: 'btn btn-success' %>
+		
+		<br>
+	<div class="show-gray">
+		<h4> Importar Dados por CSV </h4>
 		<%= form_tag import_final_measures_path(id: @metric.id), multipart:true do %>
 			<%= file_field_tag :file %>
-			<%= submit_tag "Import CSV"%>
+			<%= submit_tag "Importar CSV", class: 'btn btn-primary'%>
 
 		<% end %>
+		</div>
+	<div>
+		
+		<%= link_to 'Voltar', metrics_path, class: 'btn btn-primary' %>
 	</div>
 </div>
