@@ -47,7 +47,7 @@
 		
 		<br>
 	<div class="show-gray">
-		<h4> Importar Dados por CSV </h4>
+		<h4> Importar Dados por CSV <button class="btnfa" title="Crie um arquivo CSV com cabeçalho. A primeira coluna deve ser o campo data, a segunda nome e a terceira valor. Campo data deve estar no formato dd/mm/YYYY."><i class="fa fa-question"></i></button></h4> 
 		<%= form_tag import_final_measures_path(id: @metric.id), multipart:true do %>
 			<%= file_field_tag :file %>
 			<%= submit_tag "Importar CSV", class: 'btn btn-primary'%>
