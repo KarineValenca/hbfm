@@ -59,10 +59,43 @@ class MetricsController < ApplicationController
 		end
 	end
 
+
 	def destroy
 		@metric = Metric.find(params[:id])
 		@metric.destroy
 		redirect_to @metric, notice: 'Métrica Excluída com Sucesso.'
+	end
+
+	def create_pre_defined_metric
+		option = params[:param]
+
+		if option == "1"
+			@unit_of_measurement = UnitOfMeasurement.find_or_create_by(:name => "Linhas de Código") do |unit_of_measurement|
+				unit_of_measurement.initials = "LOC"
+				unit_of_measurement.user_id = current_user.id
+			end
+			@metric = Metric.create!(:name => "Linhas de Código", :scale => "Absoluta", 
+				:unit_of_measurement_id => @unit_of_measurement.id, :user_id => current_user.id)
+			redirect_to @metric, notice: 'Métrica Criada com Sucesso'
+		elsif option == "2"
+			@unit_of_measurement = UnitOfMeasurement.find_or_create_by(:name => "Linhas de Código por Hora") do |unit_of_measurement|
+				unit_of_measurement.initials = "LOC/h"
+				unit_of_measurement.user_id = current_user.id
+			end
+			@metric = Metric.create!(:name => "Produtividade", :scale => "Ratio", 
+				:unit_of_measurement_id => @unit_of_measurement.id, :user_id => current_user.id)
+			redirect_to @metric, notice: 'Métrica Criada com Sucesso'
+		elsif option == "3"
+			@unit_of_measurement = UnitOfMeasurement.find_or_create_by(:name => "Pontos Entregues") do |unit_of_measurement|
+				unit_of_measurement.initials = "PE"
+				unit_of_measurement.user_id = current_user.id
+			end
+			@metric = Metric.create!(:name => "Velocity", :scale => "Absoluta", 
+				:unit_of_measurement_id => @unit_of_measurement.id, :user_id => current_user.id)
+			redirect_to @metric, notice: 'Métrica Criada com Sucesso'
+		else 
+			#nothing todo
+		end
 	end
 
 	private
