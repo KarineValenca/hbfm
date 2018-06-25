@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   	end
   end
   resources :unit_of_measurements
-  resources :metrics
+  resources :metrics do
+    collection do
+      get 'create_pre_defined_metric'
+      post 'create_pre_defined_metric'
+    end
+  end
   
   resources :final_measures do
     collection do

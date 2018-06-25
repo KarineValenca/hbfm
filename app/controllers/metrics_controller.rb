@@ -59,10 +59,17 @@ class MetricsController < ApplicationController
 		end
 	end
 
+
 	def destroy
 		@metric = Metric.find(params[:id])
 		@metric.destroy
 		redirect_to @metric, notice: 'Métrica Excluída com Sucesso.'
+	end
+
+	def create_pre_defined_metric
+		puts "OLA"
+		option = [params[:param]]
+		puts "#{search}"
 	end
 
 	private
