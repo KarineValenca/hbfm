@@ -3,6 +3,14 @@ class FinalMeasuresController < ApplicationController
 
 
 	def new
+		@final_measure_verify = FinalMeasure.last
+		puts "$" * 200
+		puts @final_measure_verify.id
+		if @final_measure_verify.is_final != true
+			puts "&&" * 100
+			@final_measure_verify.destroy
+		end
+
 		@metric = Metric.find(params[:metric])
 		@final_measure = FinalMeasure.new(:metric_id => @metric)
 		@measure = Measure.new
